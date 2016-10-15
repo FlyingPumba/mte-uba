@@ -17,7 +17,7 @@ class TalleresController < AuthorizedController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def taller_params
-      params.require(:taller).permit(:nombre,direcciones_attributes:[ :calle, :altura, :_destroy,:id, new_direcciones:[:calle,:altura,:_destroy,:id]])
+      params.require(:taller).permit(:nombre,direcciones_attributes:[ :calle, :altura, :_destroy,:id])
     end
 
 end
