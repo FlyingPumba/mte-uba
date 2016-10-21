@@ -6,8 +6,8 @@
   <%= search_form_for @search, :builder => Formtastic::FormBuilder, class: "formtastic search" do |f| %>
      <%= f.inputs do %>
         <%= f.input :patente_cont, :label => "Patente" %>
-        <%= f.input :marca_cont, :label => "Marca" %>
-        <%= f.input :año_eq, :label => "Año" %>
+        <%# f.input :marca_cont, :label => "Marca" %>
+        <%# f.input :año_eq, :label => "Año" %>
      <% end %>
      <%= f.actions do %>
         <%= button_tag(:class => "button submit", 'data-disable-with' => "Buscando...", style: "float: center;") do
@@ -16,5 +16,6 @@
      <% end %>
   <% end %>
   </div>
+  yufufufufu
 </div>
 <%end%>
