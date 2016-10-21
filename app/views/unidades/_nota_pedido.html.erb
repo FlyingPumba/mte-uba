@@ -25,5 +25,8 @@
         </table>
         <%= will_paginate(@nota_pedidos) %>
         </center>
+        <ul>
+          <li class="fa fa-plus-circle fa-lg"><%= link_to "Nota de Pedido", new_unidad_nota_pedido_path(@unidad, :comprobantable_type => "#{@unidad.class.to_s}", :comprobantable_id => @unidad.id) %></li>
+        </ul>
     </div>
 </div>
