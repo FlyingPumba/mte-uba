@@ -68,7 +68,7 @@ $(document).ready(function()
 
   $("#filters fieldset.inputs :input").each(function(){
    if( $(this).val() != '' ){
-     $('.accordion').accordion("activate");
+     $(".accordion").accordion("option", "active", 1);
    }
   });
 
