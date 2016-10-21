@@ -1,40 +1,38 @@
-<%= form_for @nota_pedido, url: nota_pedidos_path, :html => { :class => "form-horizontal nota_pedido" } do |f| %>
-  <% if @nota_pedido.errors.any? %>
-    <div id="error_expl" class="panel panel-danger">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= pluralize(@nota_pedido.errors.count, "error") %> prohibited this nota_pedido from being saved:</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-        <% @nota_pedido.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    </div>
+<%= semantic_form_for [@comprobantable, @nota_pedido] do |f| %>
+  <!-- <%#= f.semantic_errors %> -->
+  <%= render 'shared/error_handler', :obj_errors => @nota_pedido.errors %>
+
+  <%= f.inputs(:class => :column_left ) do %>
+
+    <input type="hidden" name="Language" value="English">
+
+    <%= f.input :fecha, as: :string, input_html: { class: 'datepicker' } %>
+    <%= f.input :numeroserie, as: :string %>
+
+  <% end %>
+  <%= hidden_field_tag :comprobantable_type,  @comprobantable.class.to_s %>
+  <%= hidden_field_tag :comprobantable_id, @comprobantable.id %>
+
+  <%= f.inputs(:class => :column_right ) do %>
+
+    <%= f.input :observation, :as => :text, input_html: { size: 10, style: "text-align:left;height:35px"} %>
   <% end %>
 
-  <div class="form-group">
-    <%= f.label :numeroserie, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :numeroserie, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:numeroserie) %>
-  </div>
 
-  <div class="form-group">
-    <%= f.label :fecha, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.date_select :fecha, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:fecha) %>
+  <hr class="clear">
+  <%= render('shared/items_comprobante', :f => f) %>
+  <%#= render('shared/buttons_comprobante', :f => f) %>
+  <%= render('shared/common_form_buttons') %>
+  <%#= render 'shared/attachments_manager', :f => f %>
+
+
   </div>
 
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                nota_pedidos_path, :class => 'btn btn-default' %>
+      <%#= f.submit nil, :class => 'btn btn-primary' %>
+      <%#= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                @comprobantable, :class => 'btn btn-default' %>
     </div>
   </div>
 <% end %>

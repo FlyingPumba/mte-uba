@@ -1,0 +1,5 @@
+<tr class="nested-fields"style="width:80%">
+  <td><%= f.input :descripcion, :as => :string , :input_html => { :size => 10, :style => "text-align:right;"} ,:label => false %></td>
+  <td><%= f.input :cantidad, :as => :string , :input_html => { :size => 10, :style => "text-align:right;"} ,:label => false %></td>
+  <td style="align:right" class="remove"><%= link_to_remove_association('' , f,html_options = { class: 'fa fa-trash-o fa-lg' }) %></td>
+</tr>

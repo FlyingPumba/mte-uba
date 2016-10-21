@@ -1,39 +1,38 @@
-<%- model_class = NotaPedido -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+<% content_for(:breadcrumbs) do %>
+    <%= breadcrumbs do |b|
+      b.item current_taller.nombre.titlecase, root_path
+      b.item @comprobantable.class.model_name.human, @comprobantable.class
+      b.item @comprobantable.full_name, @comprobantable
+      b.item @nota_pedido.type_and_number, [@comprobantable, @nota_pedido], :active => true
+    end %>
+<%end%>
+
+<% content_for(:sidebar) do %>
+<div class="block">
+  <div class='navigation'>
+    <ul>
+
+      <% if can?( :update, NotaPedido) %>
+        <li class="fa fa-pencil fa-lg"> <%= link_to "Editar", [:edit, @comprobantable, @nota_pedido] %></li>
+      <% end %>
+
+    </ul>
+  </div>
 </div>
+<% end %>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:numeroserie) %>:</strong></dt>
-  <dd><%= @nota_pedido.numeroserie %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:fecha) %>:</strong></dt>
-  <dd><%= @nota_pedido.fecha %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:detalles) %>:</strong></dt>
-</dl>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:cantidad) %></th>
-      <th><%= model_class.human_attribute_name(:descripcion) %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @nota_pedido.detalles.each do |detalle| %>
-      <tr>
-        <td><%= detalle.cantidad %></td>
-        <td><%= detalle.descripcion %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'shared/datos_comprobante' , :obj_to_show => @nota_pedido, :comp_to_show => @comprobantable  %>
+
+<%= render 'shared/detalles_comprobante' , :obj_to_show => @nota_pedido %>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
-              nota_pedidos_path, :class => 'btn btn-default'  %>
+              @comprobantable, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_nota_pedido_path(@nota_pedido), :class => 'btn btn-default' %>
+              [:edit, @comprobantable, @nota_pedido], :class => 'btn btn-default' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              nota_pedido_path(@nota_pedido),
+              [@comprobantable, @nota_pedido],
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
+

@@ -1,0 +1,29 @@
+<div class="panel panel-default">
+    <div style="min-height: 50px;" class="panel-heading">Notas de Pedido
+    </div>
+    <div class="panel-content">
+    <center>
+        </br>
+        <table class="table table-hover table-striped">
+          <thead>
+            <tr>
+              <th><%= model_class.human_attribute_name(:fecha) %></th>
+              <th><%= model_class.human_attribute_name(:numeroserie) %></th>
+              <th><%= model_class.human_attribute_name(:observation) %></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @nota_pedidos.each do |nota_pedido| %>
+              <tr>
+                <td><%=link_to nota_pedido.fecha, [@unidad, nota_pedido] %></td>
+                <td><%=link_to nota_pedido.numeroserie, [@unidad, nota_pedido] %></td>
+                <td><%=link_to nota_pedido.observation, [@unidad, nota_pedido] %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= will_paginate(@nota_pedidos) %>
+        </center>
+    </div>
+</div>

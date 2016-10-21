@@ -9,9 +9,11 @@
 #  updated_at  :datetime         not null
 #
 
-class NotaPedido < ActiveRecord::Base
+class NotaPedido < Comprobante
   has_many :detalles, as: :detallable, class_name:"Detalle", dependent: :destroy
   has_one :solicitante, class_name:"Usuario"
   has_one :autorizante, class_name:"Usuario"
-  self.table_name = "notas_pedidos"
+
+  accepts_nested_attributes_for :detalles, reject_if: :all_blank, allow_destroy: true
+
 end

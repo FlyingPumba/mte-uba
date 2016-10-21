@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161015012701) do
+ActiveRecord::Schema.define(version: 20161015192446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,19 @@ ActiveRecord::Schema.define(version: 20161015012701) do
   end
 
   add_index "choferes", ["taller_id"], name: "index_choferes_on_taller_id", using: :btree
+
+  create_table "comprobantes", force: :cascade do |t|
+    t.string   "type"
+    t.string   "numeroserie"
+    t.date     "fecha"
+    t.text     "observation"
+    t.integer  "comprobantable_id"
+    t.string   "comprobantable_type"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "comprobantes", ["comprobantable_type", "comprobantable_id"], name: "index_comprobantes_on_comprobantable_type_and_comprobantable_id", using: :btree
 
   create_table "detalles", force: :cascade do |t|
     t.integer  "cantidad"

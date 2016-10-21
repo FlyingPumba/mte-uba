@@ -18,6 +18,8 @@
 # Los saque de: gem 'inflections', require:'inflections/es'
 # No puedo lograr que me traiga solo lo de español
 #
+#
+# Siguen estando mal
 ActiveSupport::Inflector.inflections do |inflect|
   inflect.clear :all
 
@@ -48,6 +50,8 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.singular(/([sfj]e)s$/, '\1')
   inflect.singular(/ces$/, 'z')
 
+  inflect.irregular('comprobante', 'comprobantes')
   inflect.irregular('el', 'los')
   inflect.irregular('membership','memberships')
+  inflect.irregular('detalle', 'detalles')
 end

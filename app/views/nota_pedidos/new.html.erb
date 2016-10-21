@@ -1,5 +1,10 @@
-<%- model_class = NotaPedido -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
-</div>
-<%= render :partial => 'form' %>
+<% content_for(:breadcrumbs) do %>
+    <%= breadcrumbs do |b|
+      b.item current_taller.nombre.titlecase, root_path
+      b.item @comprobantable.class.model_name.human, @comprobantable.class
+      b.item @comprobantable.full_name, @comprobantable
+      b.item "Nueva Nota Pedido", @comprobantable, :active => true
+    end %>
+<%end%>
+
+<%= render 'form' %>

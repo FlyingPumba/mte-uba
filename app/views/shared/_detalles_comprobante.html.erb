@@ -1,0 +1,18 @@
+<% if obj_to_show.detalles.any? %>
+  <table class='table items'>
+    <thead>
+      <tr>
+        <th align="center">Descripcion</th>
+        <th align="center">Cantidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% obj_to_show.detalles.order(:id).each do |item| %>
+        <tr>
+          <td align="center"><%= item.descripcion %></td>
+          <td align="center"><%= item.cantidad %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
