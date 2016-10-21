@@ -1,13 +1,13 @@
 class NotaPedidosController < ApplicationController
   before_action :set_nota_pedido, except: [:index, :new, :create]
 
-  before_filter :set_comprobantable
+  before_filter :set_comprobantable,except: [:index]
 
   # GET /notas_pedidos
   # GET /notas_pedidos.json
-  #def index
-  #  @notas_pedidos = NotaPedido.all
-  #end
+  def index
+    @notas_pedidos = NotaPedido.all
+  end
 
   # GET /notas_pedidos/1
   # GET /notas_pedidos/1.json
