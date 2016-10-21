@@ -122,7 +122,7 @@ body {
 
 header {
   display: block;
-  background-color: #261f1f;
+  background-color: #ffffff;
   background-repeat: no-repeat;
   background-position: 1% 1%;
   padding: 0 0px;
@@ -161,7 +161,7 @@ footer {
   width: 100%;
 }
 div.header {
-  background-color: #261f1f;
+  background-color: #ffffff;
   float: left;
   width: 100%;
   font-size: small;
@@ -186,18 +186,6 @@ div.status {
 div.company h2 {
   margin: 1px 0;
   width: 80%;
-}
-
-div.company h2 a {
-  color: white;
-}
-
-div.status h5 {
-  color: white;
-}
-
-div.status h5 a {
-  color: white;
 }
 
 div#main-navigation {
