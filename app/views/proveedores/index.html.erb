@@ -5,7 +5,6 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:nombre) %></th>
       <th><%= model_class.human_attribute_name(:taller_id) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -14,10 +13,11 @@
   <tbody>
     <% @proveedores.each do |proveedor| %>
       <tr>
-        <td><%= link_to proveedor.id, proveedor_path(proveedor) %></td>
         <td><%= proveedor.nombre %></td>
         <td><%= Taller.find(proveedor.taller_id).nombre %></td>
         <td>
+          <%= link_to t('.show', :default => t("helpers.links.show")),
+                      unidad, :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_proveedor_path(proveedor), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
