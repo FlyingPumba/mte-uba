@@ -4,10 +4,12 @@ Rails.application.routes.draw do
   resources :turnos
   resources :detalles
   resources :nota_reparaciones
-  resources :nota_pedidos, only: [:index]
-  resources :unidades do
-    resources :nota_pedidos, except: [:index]
-  end
+  resources :nota_pedidos
+  resources :unidades
+  #resources :nota_pedidos, only: [:index]
+  # resources :unidades do
+  #   resources :nota_pedidos, except: [:index]
+  # end
   resources :proveedores
   resources :choferes
   resources :memberships

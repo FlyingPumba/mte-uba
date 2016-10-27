@@ -22,5 +22,7 @@
     <% end %>
   </tbody>
 </table>
-<br>
 
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_nota_pedido_path,
+            :class => 'btn btn-primary' %>

@@ -24,11 +24,7 @@ class NotaPedidosController < ApplicationController
       format.html # new.html.erb
       format.xml  { render xml: @factura }
     end
-
-
   end
-
-
 
   # GET /notas_pedidos/1/edit
   def edit
@@ -94,4 +90,3 @@ class NotaPedidosController < ApplicationController
 
     end
 end
-
