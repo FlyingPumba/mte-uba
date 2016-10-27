@@ -1706,9 +1706,6 @@ body {
 h1, h2, h3 {
     color: #111;
 }
-a:link, a:visited, a:hover, a:active {
-    color: #111;
-}
 a {
     -moz-outline: none;
 }
@@ -1809,7 +1806,6 @@ hr {
 #main-navigation ul li a:link, #main-navigation ul li a:visited, #main-navigation ul li a:hover, #main-navigation ul li a:active {
     padding: 8px 0;
     text-decoration: none;
-    color: #111;
 }
 #main-navigation ul li.active {
     color: #a4a4a4;
@@ -1845,7 +1841,6 @@ hr {
 }
 .secondary-navigation ul li a:link, .secondary-navigation ul li a:visited, .secondary-navigation ul li a:hover, .secondary-navigation ul li a:active {
     text-decoration: none;
-    color: #111;
 }
 .secondary-navigation ul li.text {
     padding: 10px 15px;
@@ -1863,7 +1858,6 @@ hr {
 }
 #user-navigation ul li a:link, #user-navigation ul li a:visited, #user-navigation ul li a:hover, #user-navigation ul li a:active {
     text-decoration: none;
-    color: #111;
 }
 #user-navigation ul li, .secondary-navigation ul li {
     float: left;

@@ -71,4 +71,3 @@ Rails.application.configure do
    config.action_view.raise_on_missing_translations = false
    config.reload_classes_only_on_change = false
 end
-
