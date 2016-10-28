@@ -1,12 +1,20 @@
 # == Schema Information
 #
-# Table name: notas_pedidos
+# Table name: comprobantes
 #
-#  id          :integer          not null, primary key
-#  numeroserie :string
-#  fecha       :date
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id                  :integer          not null, primary key
+#  type                :string
+#  numeroserie         :string
+#  fecha               :date
+#  observation         :text
+#  comprobantable_id   :integer
+#  comprobantable_type :string
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#
+# Indexes
+#
+#  index_comprobantes_on_comprobantable_type_and_comprobantable_id  (comprobantable_type,comprobantable_id)
 #
 
 class NotaPedido < Comprobante
