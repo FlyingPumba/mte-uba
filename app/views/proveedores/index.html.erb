@@ -17,7 +17,7 @@
         <td><%= Taller.find(proveedor.taller_id).nombre %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
-                      unidad, :class => 'btn btn-default btn-xs' %>
+                      proveedor, :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_proveedor_path(proveedor), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
