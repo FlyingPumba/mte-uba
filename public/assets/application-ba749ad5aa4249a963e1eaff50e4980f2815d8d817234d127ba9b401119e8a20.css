@@ -1573,7 +1573,7 @@ form.formtastic fieldset>ol>li.date fieldset ol li label input, form.formtastic 
 }
 form.formtastic hr {
     height: 1px;
-    border-bottom: solid #eaeaea 1px;
+    border-bottom: solid #000000 1px;
     padding-top: 10px;
     margin-bottom: 15px;
     background-color: #fff;
@@ -1606,7 +1606,7 @@ form.formtastic fieldset>ol>li fieldset ol {
 form.formtastic fieldset>ol>li.string input, form.formtastic fieldset>ol>li.password input, form.formtastic fieldset>ol>li.numeric input, form.formtastic fieldset>ol>li.text textarea, form.formtastic fieldset>ol>li.datepicker input {
     width: 100%;
     max-width: 100%;
-    border: 1px solid #eaeaea;
+    border: 1px solid #000000;
     padding: 2px;
 }
 form.formtastic fieldset>ol>li.select select, form.formtastic fieldset>ol>li.file input {
@@ -2030,7 +2030,7 @@ hr {
     outline: none;
 }
 .table th {
-    background: #eaeaea;
+    background: #000000;
     color: #222;
     font-weight: bold;
 }
@@ -2038,7 +2038,7 @@ hr {
     width: 80px;
 }
 .table td {
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid #000000;
 }
 .table td.last {
     padding-top: 0px;
@@ -6518,7 +6518,7 @@ form.formtastic fieldset>ol>li.date fieldset ol li label input, form.formtastic 
 }
 form.formtastic hr {
     height: 1px;
-    border-bottom: solid #eaeaea 1px;
+    border-bottom: solid #000000 1px;
     padding-top: 10px;
     margin-bottom: 15px;
     background-color: #fff;
@@ -6551,7 +6551,7 @@ form.formtastic fieldset>ol>li fieldset ol {
 form.formtastic fieldset>ol>li.string input, form.formtastic fieldset>ol>li.password input, form.formtastic fieldset>ol>li.numeric input, form.formtastic fieldset>ol>li.text textarea, form.formtastic fieldset>ol>li.datepicker input {
     width: 100%;
     max-width: 100%;
-    border: 1px solid #eaeaea;
+    border: 1px solid #000000;
     padding: 2px;
 }
 form.formtastic fieldset>ol>li.select select, form.formtastic fieldset>ol>li.file input {
@@ -6977,7 +6977,7 @@ hr {
     outline: none;
 }
 .table th {
-    background: #eaeaea;
+    background: #000000;
     color: #222;
     font-weight: bold;
 }
@@ -6985,7 +6985,7 @@ hr {
     width: 80px;
 }
 .table td {
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid #000000;
 }
 .table td.last {
     padding-top: 0px;
@@ -7314,30 +7314,25 @@ a {
 a:visited {
   color: #666;
 }
-/* line 28, /home/ivan/src/mte-uba/app/assets/stylesheets/scaffolds.scss */
-a:hover {
-  color: #fff;
-  background-color: #000;
-}
 
-/* line 35, /home/ivan/src/mte-uba/app/assets/stylesheets/scaffolds.scss */
+/* line 30, /home/ivan/src/mte-uba/app/assets/stylesheets/scaffolds.scss */
 div.field, div.actions {
   margin-bottom: 10px;
 }
 
-/* line 40, /home/ivan/src/mte-uba/app/assets/stylesheets/scaffolds.scss */
+/* line 35, /home/ivan/src/mte-uba/app/assets/stylesheets/scaffolds.scss */
 #notice {
   color: green;
 }
 
-/* line 44, /home/ivan/src/mte-uba/app/assets/stylesheets/scaffolds.scss */
+/* line 39, /home/ivan/src/mte-uba/app/assets/stylesheets/scaffolds.scss */
 .field_with_errors {
   padding: 2px;
   background-color: red;
   display: table;
 }
 
-/* line 50, /home/ivan/src/mte-uba/app/assets/stylesheets/scaffolds.scss */
+/* line 45, /home/ivan/src/mte-uba/app/assets/stylesheets/scaffolds.scss */
 #error_explanation {
   width: 450px;
   border: 2px solid red;
@@ -7346,7 +7341,7 @@ div.field, div.actions {
   margin-bottom: 20px;
   background-color: #f0f0f0;
 }
-/* line 58, /home/ivan/src/mte-uba/app/assets/stylesheets/scaffolds.scss */
+/* line 53, /home/ivan/src/mte-uba/app/assets/stylesheets/scaffolds.scss */
 #error_explanation h2 {
   text-align: left;
   font-weight: bold;
@@ -7357,7 +7352,7 @@ div.field, div.actions {
   background-color: #c00;
   color: #fff;
 }
-/* line 69, /home/ivan/src/mte-uba/app/assets/stylesheets/scaffolds.scss */
+/* line 64, /home/ivan/src/mte-uba/app/assets/stylesheets/scaffolds.scss */
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
