@@ -142,14 +142,15 @@ section {
   display: block;
   float: left;
   /* overflow: hidden; */
-  width: 89%;
+  width: 100%;
 }
 
 nav {
   display: block;
   float: left;
   overflow: hidden;
-  width: 99%;
+  width: 100%;
+  padding-right: 15px;
 }
 
 aside {
@@ -197,12 +198,8 @@ div.company h2 {
 }
 
 div#main-navigation {
-  width: 99%;
+  width: 100%;
   color: white;
-}
-
-div#main {
-  width: 99%;
 }
 
 div.block {
@@ -241,13 +238,7 @@ div.content {
 }
 
 div.block div.content div.inner {
-  width: 98%;
-  padding: 0 0 0;
-}
-
-div.inner {
   width: 100%;
-  height: 100%;
   padding: 0 0 0;
 }
 
@@ -268,10 +259,6 @@ div#tag_cloud {
   padding-left: 1%;
 }
 
-div.accordion {
-  width: 97%;
-}
-
 div.wat-cf {
   width: 99%;
   height: 99%;
@@ -290,7 +277,6 @@ section div#wrapper {
 
 div.content div.inner form.formtastic {
   font-size: small;
-  width: 98%;
 }
 
 div#factura_container {
@@ -311,7 +297,7 @@ h1 {
 }
 
 table.table {
-  width: 97%;
+  margin-top: 20px;
 }
 
 div.attribute {

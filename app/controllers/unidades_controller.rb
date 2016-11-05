@@ -23,7 +23,8 @@ class UnidadesController < AuthorizedController
   # GET /unidades/1.json
   def show
     @choferes = @unidad.choferes.order('apellido desc').paginate(page: params[:page], per_page: 15)
-    @nota_pedidos =@unidad.nota_pedidos.paginate(page: params[:page], per_page:15)
+    @nota_pedidos = @unidad.nota_pedidos.paginate(page: params[:page], per_page:15)
+    @nota_reparaciones = []
   end
 
   # GET /unidades/new
