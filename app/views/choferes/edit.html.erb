@@ -1,15 +1,5 @@
 <% content_for(:title, Chofer.model_name.human.titlecase) %>
 
-<% content_for(:sidebar) do %>
-  <div class="block">
-      <div class="navigation">
-        <ul>
-          <li class="fa fa-eye fa-lg"><%= link_to( "Mostrar", chofer_path(@chofer) ) %></li>
-        </ul>
-      </div>
-  </div>
-<% end %>
-
 <% content_for(:breadcrumbs) do %>
   <%= breadcrumbs do |b|
       b.item Chofer.model_name.human, choferes_path
