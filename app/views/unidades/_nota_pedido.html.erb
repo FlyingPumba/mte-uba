@@ -9,24 +9,18 @@
             <tr>
               <th><%= model_class.human_attribute_name(:fecha) %></th>
               <th><%= model_class.human_attribute_name(:numeroserie) %></th>
-              <th><%= model_class.human_attribute_name(:observation) %></th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
             <% @nota_pedidos.each do |nota_pedido| %>
               <tr>
-                <td><%=link_to nota_pedido.fecha, [@unidad, nota_pedido] %></td>
-                <td><%=link_to nota_pedido.numeroserie, [@unidad, nota_pedido] %></td>
-                <td><%=link_to nota_pedido.observation, [@unidad, nota_pedido] %></td>
+                <td><%= nota_pedido.fecha %></td>
+                <td><%=link_to (nota_pedido) do %> <% nota_pedido.numeroserie %> <% end %></td>
               </tr>
             <% end %>
           </tbody>
         </table>
-        <%= will_paginate(@nota_pedidos) %>
+        <%# will_paginate(@nota_pedidos) %>
         </center>
-        <!-- <ul>
-          <li class="fa fa-plus-circle fa-lg"><%= link_to "Nota de Pedido", new_nota_pedido_path(@unidad, :comprobantable_type => "#{@unidad.class.to_s}", :comprobantable_id => @unidad.id) %></li>
-        </ul> -->
     </div>
 </div>

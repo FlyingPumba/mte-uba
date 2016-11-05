@@ -25,7 +25,6 @@ class Unidad < ActiveRecord::Base
   has_many :unidad_choferes, class_name: 'UnidadChofer', dependent: :destroy
   has_many :choferes,-> {uniq} ,through: :unidad_choferes, dependent: :destroy
 
-  # has_many :comprobantes, as: :comprobantable, class_name: 'Comprobante', dependent: :destroy
   accepts_nested_attributes_for :unidad_choferes, reject_if: :all_blank, allow_destroy: true
   scope :by_taller, ->(taller) { where(taller_id: taller.id) }
   scope :by_patente, ->(patente) { where('patente = ?', patente) }
@@ -36,20 +35,16 @@ class Unidad < ActiveRecord::Base
   validates :año, presence: true
   validates_uniqueness_of :patente, scope: :taller_id
 
-  #has_many :nota_reparaciones, dependent: :restrict_with_exception
-  # has_many :nota_pedidos,as: :comprobantable, dependent: :restrict_with_exception
+  has_many :detalles, class_name: 'Detalle', dependent: :restrict_with_exception
+  # has_many :nota_reparaciones, class_name: 'NotaReparacion', dependent: :restrict_with_exception
+  # has_many :nota_pedidos, class_name: 'NotaPedido', dependent: :restrict_with_exception
 
-  # before_destroy :control_sin_comprobantes
+  before_destroy :control_sin_detalles
 
   #belongs_to :zona
 
   #accepts_nested_attributes_for :attachments, reject_if: :all_blank, allow_destroy: true
   #accepts_nested_attributes_for :day_deliveries, reject_if: :all_blank, allow_destroy: true
-
-
-  #def can_delete?
-  #  !comprobantes.any?
-  #end
 
   # funcionalidad: accesible_by(current_ability))
   # 1) rails g cancan:ability
@@ -57,12 +52,12 @@ class Unidad < ActiveRecord::Base
     "#{patente}"
   end
 
-  # def control_sin_comprobantes
-  #   if [comprobantes].any? { |cpbte| cpbte.any? }
-  #     errors.add(:base, "La cuenta posee #{comprobantes.count} comprobantes asociado.")
-  #     false
-  #   end
-  # end
+  def control_sin_detalles
+    if [detalles].any? { |cpbte| cpbte.any? }
+      errors.add(:base, "La cuenta posee #{detalles.count} detalles asociados.")
+      false
+    end
+  end
 
   def index_path
   end
