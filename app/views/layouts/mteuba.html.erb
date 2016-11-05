@@ -33,8 +33,8 @@
           <%= content_for?(:status_menu) ? yield(:status_menu) : render('shared/status_menu') %>
         </div>
       </div>
-      <nav>
-      <a class="navbar-brand" href="#">MTE-UBA</a>
+      <nav class="navbar navbar-default">
+        <a class="navbar-brand" href="#">MTE-UBA</a>
         <%= content_for?(:user_navigation) ? yield(:user_navigation) : render('shared/user_navigation') %>
         <%= render('shared/main_navigation') %>
       </nav>

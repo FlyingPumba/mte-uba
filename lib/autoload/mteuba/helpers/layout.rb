@@ -34,7 +34,7 @@ module Mteuba
         yield menu if block_given?
 
         content_tag("div", options) do
-          content_tag("ul", "", :class => "wat-cf") do
+          content_tag("ul", "", :class => "nav navbar-nav") do
             menu.collect { |item|
               content_tag("li", :class => item[:class]) do
                 link_to(item[:label], item[:href], item[:link_options])
@@ -124,6 +124,9 @@ module Mteuba
         options[:class] ||= ""
         options[:class] << " breadcrumb"
         options[:class].strip!
+        options[:style] ||= ""
+        options[:style] << "display: none;"
+        options[:style].strip!
 
         content_tag("div", options) do
           content_tag("ul") do

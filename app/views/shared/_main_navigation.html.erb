@@ -1,4 +1,4 @@
-<%= navigation(:id => "main-navigation") do |menu| %>
+<%= navigation(:id => "main-navigation", :class => "navbar-collapse collapse") do |menu| %>
   <%# if current_user.can_operated_engine?(:MteUba) %>
 
     <% menu.item(Unidad.model_name.human.pluralize, unidades_path, :active => controller.controller_name.include?('unidades')) %>

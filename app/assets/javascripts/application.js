@@ -56,6 +56,7 @@ $(document).ready(function()
   });
 
   $('.accordion').accordion({
+    header: "h3",
     collapsible: true,
     active: false,
     autoHeight: true
@@ -73,57 +74,6 @@ $(document).ready(function()
   });
 
 });
-
-    //[PVD] :: Dynamic JQuery search
-    /*
-    function DynamicSearch(select_name, search_path, id_val, name_val){
-      if (id_val == null) id_val = "";
-
-      var x = $(select_name).tokenInput(search_path,
-      {
-        hintText: "Ingrese una búsqueda ...",
-        noResultsText: "No hay datos",
-        searchingText: "Buscando...",
-        tokenLimit: 1,
-        minChars: 1,
-        searchDelay: 200,
-        theme: "facebook",
-        onDelete: function(item){
-          try{
-            onDelDynamicSearch(select_name, item);
-          }
-          catch(e){}
-        },
-        onAdd: function (item){
-          try{
-            onAddDynamicSearch(select_name, item);
-          }
-          catch(e){}
-        },
-        onResult: function (results) {
-          //$.each(results, function (index, value) {
-          //  value.name = "OMG: " + value.name;
-          //});
-          var newResults = null;
-          try
-          {
-            newResults = onResultDynamicSearch(results, this[0].id);
-          }
-          catch(err)
-          {
-            newResults = results;
-          }
-          return (newResults);
-        }
-      });
-      if (id_val != ""){
-        try{
-          $(select_name).tokenInput("add", {id: id_val, name: name_val.replace(/\"/g, '*')});
-        }
-        catch(e){}
-      }
-    }
-    */
 
 function DynamicSearch(select_name, search_path, id_val, name_val){
   if (id_val == null) id_val = "";
@@ -168,54 +118,6 @@ function DynamicSearch(select_name, search_path, id_val, name_val){
     catch(e){}
   }
 }
-
-function DynamicSearch_prueba(select_name, search_path, id_val, name_val){
-  if (id_val == null) id_val = "";
-  var x = $(select_name).tokenInput(search_path,
-  {
-    hintText: "Ingrese una búsqueda ...",
-    noResultsText: "No hay datos",
-    searchingText: "Buscando...",
-    tokenLimit: 1,
-    minChars: 1,
-    searchDelay: 200,
-    theme: "facebook",
-    onDelete: function(item){
-      try{
-        onDelDynamicSearch(select_name, item);
-      }
-      catch(e){}
-    },
-    onAdd: function (item){
-      try{
-        onAddDynamicSearch(select_name, item);
-      }
-      catch(e){}
-    },
-    onResult: function (results) {
-      //$.each(results, function (index, value) {
-      //  value.name = "OMG: " + value.name;
-      //});
-      var newResults = null;
-      try
-      {
-        newResults = onResultDynamicSearch(results, this[0].id);
-      }
-      catch(err)
-      {
-        newResults = results;
-      }
-      return (newResults);
-    }
-  });
-  if (id_val != ""){
-    try{
-      $(select_name).tokenInput("add", {id: id_val, name: name_val.replace(/\"/g, '*')});
-    }
-    catch(e){}
-  }
-}
-
 
 // Scroll effect for anchors
 jQuery(function( $ )
