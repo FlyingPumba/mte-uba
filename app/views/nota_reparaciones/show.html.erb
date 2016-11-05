@@ -16,6 +16,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:cantidad) %></th>
       <th><%= model_class.human_attribute_name(:descripcion) %></th>
+      <th><%= model_class.human_attribute_name(:destino) %></th>
     </tr>
   </thead>
   <tbody>
@@ -23,6 +24,7 @@
       <tr>
         <td><%= detalle.cantidad %></td>
         <td><%= detalle.descripcion %></td>
+        <td></td>
       </tr>
     <% end %>
   </tbody>

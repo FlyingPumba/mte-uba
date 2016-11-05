@@ -1,4 +1,4 @@
-<%= form_for @nota_reparacion, :html => { :class => "form-horizontal nota_reparacion" } do |f| %>
+<%= semantic_form_for @nota_reparacion, :html => { :class => "form-horizontal nota_reparacion" } do |f| %>
 
   <% if @nota_reparacion.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
@@ -17,11 +17,16 @@
 
   <div class="form-group">
     <%= f.label :numeroserie, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
+    <div class="col-lg-2">
       <%= f.text_field :numeroserie, :class => 'form-control' %>
+      <script type="text/javascript">
+      // script to disable numeroserie field, since it's autopopulated from the controller
+      $('#nota_reparacion_numeroserie').attr('readonly', 'true');
+      </script>
     </div>
     <%=f.error_span(:numeroserie) %>
   </div>
+
   <div class="form-group">
     <%= f.label :fecha, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
@@ -29,6 +34,8 @@
     </div>
     <%=f.error_span(:fecha) %>
   </div>
+
+  <%= render('items_detalle', :f => f)%>
 
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">

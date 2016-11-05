@@ -14,4 +14,6 @@ class NotaReparacion < ActiveRecord::Base
   has_one :solicitante, class_name:"Usuario"
   has_one :autorizante, class_name:"Usuario"
   self.table_name = "notas_reparaciones"
+
+  accepts_nested_attributes_for :detalles, reject_if: :all_blank, allow_destroy: true
 end

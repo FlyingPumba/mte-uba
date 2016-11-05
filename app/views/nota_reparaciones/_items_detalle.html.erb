@@ -1,0 +1,18 @@
+<hr class='clear' />
+<h2 class='items-title'>Detalles</h2>
+
+<%= f.inputs do %>
+  <div class="detalles">
+    <%= f.semantic_fields_for :detalles do |fc| %>
+      <%= render partial: 'detalle_fields', locals: {f: fc} %>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="links">
+  <%= link_to_add_association 'Agregar Detalle', f,
+    :detalles,
+    'data-association-insertion-method' => :append,
+    'data-association-insertion-node' => '.detalles',
+    :class => 'global_button button'%>
+</div>

@@ -22,7 +22,7 @@
 
 class Unidad < ActiveRecord::Base
   belongs_to :taller
-  has_many :unidad_choferes,class_name: 'UnidadChofer', dependent: :destroy
+  has_many :unidad_choferes, class_name: 'UnidadChofer', dependent: :destroy
   has_many :choferes,-> {uniq} ,through: :unidad_choferes, dependent: :destroy
   has_many :comprobantes, as: :comprobantable, class_name: 'Comprobante', dependent: :destroy
 

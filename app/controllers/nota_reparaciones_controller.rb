@@ -15,6 +15,8 @@ class NotaReparacionesController < ApplicationController
   # GET /notas_reparaciones/new
   def new
     @nota_reparacion = NotaReparacion.new
+    # Autopopulate with next id to be assigned
+    @nota_reparacion.numeroserie = NotaReparacion.maximum(:id).next
   end
 
   # GET /notas_reparaciones/1/edit
@@ -69,6 +71,6 @@ class NotaReparacionesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nota_reparacion_params
-      params.require(:nota_reparacion).permit(:numeroserie, :fecha)
+      params.require(:nota_reparacion).permit(:numeroserie, :fecha, :detalles_attributes => [:id, :_destroy, :detallable_id, :descripcion, :cantidad])
     end
 end
