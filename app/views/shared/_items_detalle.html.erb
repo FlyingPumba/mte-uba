@@ -4,7 +4,7 @@
 <%= f.inputs do %>
   <div class="detalles">
     <%= f.semantic_fields_for :detalles do |fc| %>
-      <%= render partial: 'detalle_fields', locals: {f: fc} %>
+      <%= render partial: 'shared/detalle_fields', locals: {f: fc} %>
     <% end %>
   </div>
 <% end %>

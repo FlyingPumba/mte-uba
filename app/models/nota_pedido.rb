@@ -1,26 +1,19 @@
 # == Schema Information
 #
-# Table name: comprobantes
+# Table name: notas_pedidos
 #
-#  id                  :integer          not null, primary key
-#  type                :string
-#  numeroserie         :string
-#  fecha               :date
-#  observation         :text
-#  comprobantable_id   :integer
-#  comprobantable_type :string
-#  created_at          :datetime         not null
-#  updated_at          :datetime         not null
-#
-# Indexes
-#
-#  index_comprobantes_on_comprobantable_type_and_comprobantable_id  (comprobantable_type,comprobantable_id)
+#  id          :integer          not null, primary key
+#  numeroserie :string
+#  fecha       :date
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
-class NotaPedido < Comprobante
+class NotaPedido < ActiveRecord::Base
   has_many :detalles, as: :detallable, class_name:"Detalle", dependent: :destroy
   has_one :solicitante, class_name:"Usuario"
   has_one :autorizante, class_name:"Usuario"
+  self.table_name = "notas_pedidos"
 
   accepts_nested_attributes_for :detalles, reject_if: :all_blank, allow_destroy: true
 

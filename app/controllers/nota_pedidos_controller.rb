@@ -1,7 +1,5 @@
 class NotaPedidosController < ApplicationController
-  before_action :set_nota_pedido, except: [:index, :new, :create]
-
-  before_filter :set_comprobantable,except: [:index]
+  before_action :set_nota_pedido, only: [:show, :edit, :update, :destroy]
 
   # GET /notas_pedidos
   # GET /notas_pedidos.json
@@ -16,13 +14,12 @@ class NotaPedidosController < ApplicationController
 
   # GET /notas_pedidos/new
   def new
-    @nota_pedido = @comprobantable.nota_pedidos.build
-    @nota_pedido.fecha = Date.today
-    #@nota_pedidd.detalles.build
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render xml: @factura }
+    @nota_pedido = NotaPedido.new
+    # Autopopulate with next id to be assigned
+    if NotaPedido.any?
+      @nota_pedido.numeroserie = NotaPedido.maximum(:id).next
+    else
+      @nota_pedido.numeroserie = 1
     end
   end
 
@@ -33,11 +30,11 @@ class NotaPedidosController < ApplicationController
   # POST /notas_pedidos
   # POST /notas_pedidos.json
   def create
-    @nota_pedido = @comprobantable.nota_pedidos.build(nota_pedido_params)
+    @nota_pedido = NotaPedido.new(nota_pedido_params)
 
     respond_to do |format|
       if @nota_pedido.save
-        format.html { redirect_to([@comprobantable, @nota_pedido], notice: 'Nota pedido was successfully created.') }
+        format.html { redirect_to @nota_pedido, notice: 'Nota pedido was successfully created.' }
         format.json { render :show, status: :created, location: @nota_pedido }
       else
         format.html { render :new }
@@ -51,7 +48,7 @@ class NotaPedidosController < ApplicationController
   def update
     respond_to do |format|
       if @nota_pedido.update(nota_pedido_params)
-        format.html { redirect_to( [@comprobantable, @nota_pedido], notice: 'Nota pedido was successfully updated.') }
+        format.html { redirect_to @nota_pedido, notice: 'Nota pedido was successfully updated.' }
         format.json { render :show, status: :ok, location: @nota_pedido }
       else
         format.html { render :edit }
@@ -65,7 +62,7 @@ class NotaPedidosController < ApplicationController
   def destroy
     @nota_pedido.destroy
     respond_to do |format|
-      format.html { redirect_to @comprobantable, notice: 'Nota pedido was successfully destroyed.' }
+      format.html { redirect_to nota_pedidos_url, notice: 'Nota pedido was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -76,17 +73,8 @@ class NotaPedidosController < ApplicationController
       @nota_pedido = NotaPedido.find(params[:id])
     end
 
-    def set_comprobantable
-      if @nota_pedido.blank?
-        @comprobantable = params[:comprobantable_type].classify.constantize.find(params[:comprobantable_id])
-      else
-        @comprobantable = @nota_pedido.comprobantable_type.constantize.find(@nota_pedido.comprobantable_id)
-      end
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def nota_pedido_params
-      params.require(:nota_pedido).permit(:numeroserie, :fecha, :observation, :detalles_attributes => [:id, :_destroy,:cantidad, :descripcion, :unidad_id])
-
+      params.require(:nota_pedido).permit(:numeroserie, :fecha, :detalles_attributes => [:id, :_destroy, :descripcion, :cantidad, :unidad_id])
     end
 end

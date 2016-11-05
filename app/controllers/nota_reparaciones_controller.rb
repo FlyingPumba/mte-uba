@@ -16,7 +16,11 @@ class NotaReparacionesController < ApplicationController
   def new
     @nota_reparacion = NotaReparacion.new
     # Autopopulate with next id to be assigned
-    @nota_reparacion.numeroserie = NotaReparacion.maximum(:id).next
+    if NotaReparacion.any?
+      @nota_reparacion.numeroserie = NotaReparacion.maximum(:id).next
+    else
+      @nota_reparacion.numeroserie = 1
+    end
   end
 
   # GET /notas_reparaciones/1/edit

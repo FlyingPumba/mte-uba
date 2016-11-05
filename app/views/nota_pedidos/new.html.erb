@@ -1,10 +1,5 @@
-<% content_for(:breadcrumbs) do %>
-    <%= breadcrumbs do |b|
-      b.item current_taller.nombre.titlecase, root_path
-      b.item @comprobantable.class.model_name.human, @comprobantable.class
-      b.item @comprobantable.full_name, @comprobantable
-      b.item "Nueva Nota Pedido", @comprobantable, :active => true
-    end %>
-<%end%>
+<h3>New Nota Pedido</h3>
 
 <%= render 'form' %>
+
+<%= link_to 'Back', nota_pedidos_path %>

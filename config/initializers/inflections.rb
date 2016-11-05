@@ -50,7 +50,6 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.singular(/([sfj]e)s$/, '\1')
   inflect.singular(/ces$/, 'z')
 
-  inflect.irregular('comprobante', 'comprobantes')
   inflect.irregular('el', 'los')
   inflect.irregular('membership','memberships')
   inflect.irregular('detalle', 'detalles')
