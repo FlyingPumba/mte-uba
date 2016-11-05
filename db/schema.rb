@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161015192446) do
+ActiveRecord::Schema.define(version: 20161105041122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,9 +47,11 @@ ActiveRecord::Schema.define(version: 20161015192446) do
     t.string   "detallable_type"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "unidad_id"
   end
 
   add_index "detalles", ["detallable_type", "detallable_id"], name: "index_detalles_on_detallable_type_and_detallable_id", using: :btree
+  add_index "detalles", ["unidad_id"], name: "index_detalles_on_unidad_id", using: :btree
 
   create_table "direcciones", force: :cascade do |t|
     t.string   "calle"
@@ -61,6 +63,15 @@ ActiveRecord::Schema.define(version: 20161015192446) do
   end
 
   add_index "direcciones", ["direccionable_type", "direccionable_id"], name: "index_direcciones_on_direccionable_type_and_direccionable_id", using: :btree
+
+  create_table "direccions", force: :cascade do |t|
+    t.string   "calle"
+    t.integer  "altura"
+    t.integer  "direccionable_id"
+    t.string   "direccionable_type"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
 
   create_table "memberships", force: :cascade do |t|
     t.integer  "role_id"
@@ -112,6 +123,12 @@ ActiveRecord::Schema.define(version: 20161015192446) do
   end
 
   add_index "talleres", ["owner_id"], name: "index_talleres_on_owner_id", using: :btree
+
+  create_table "tallers", force: :cascade do |t|
+    t.string   "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "turnos", force: :cascade do |t|
     t.string   "descripcion"
@@ -183,6 +200,7 @@ ActiveRecord::Schema.define(version: 20161015192446) do
   add_index "usuarios", ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "choferes", "talleres"
+  add_foreign_key "detalles", "unidades"
   add_foreign_key "memberships", "roles", column: "role_id"
   add_foreign_key "memberships", "talleres"
   add_foreign_key "memberships", "usuarios"

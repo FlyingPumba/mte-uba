@@ -8,7 +8,7 @@
   <tr style="width:100%">
     <td><%= f.text_field :cantidad, :class => 'form-control' %></td>
     <td><%= f.text_field :descripcion, :class => 'form-control' %></td>
-    <!-- <td><%# f.select :destino_id, current_taller.unidades.map{ |u| [u.patente, u.id] }, { include_blank: '-- elija la Unidad --' }, class: "chofer_select", id: 'unidad'%></td> -->
+    <td><%= f.select :unidad_id, current_taller.unidades.map{ |u| [u.patente, u.id] }, { include_blank: '-- elija la Unidad --' }, class: "chofer_select", id: 'unidad'%></td>
     <td class="remove"><%= link_to_remove_association('' , f,html_options = { class: 'fa fa-trash-o fa-lg' }) %></td>
   </tr>
 </table>

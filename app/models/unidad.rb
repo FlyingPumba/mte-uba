@@ -26,7 +26,6 @@ class Unidad < ActiveRecord::Base
   has_many :choferes,-> {uniq} ,through: :unidad_choferes, dependent: :destroy
   has_many :comprobantes, as: :comprobantable, class_name: 'Comprobante', dependent: :destroy
 
-
   accepts_nested_attributes_for :unidad_choferes, reject_if: :all_blank, allow_destroy: true
   scope :by_taller, ->(taller) { where(taller_id: taller.id) }
   scope :by_patente, ->(patente) { where('patente = ?', patente) }

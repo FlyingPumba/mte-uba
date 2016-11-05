@@ -24,7 +24,7 @@
       <tr>
         <td><%= detalle.cantidad %></td>
         <td><%= detalle.descripcion %></td>
-        <td></td>
+        <td><%= Unidad.find(detalle.unidad_id).patente %></td>
       </tr>
     <% end %>
   </tbody>
