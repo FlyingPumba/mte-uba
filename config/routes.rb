@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :direcciones
   resources :talleres
   resource :dashboard, only: :show
-  resource :setting, only: :show
+  resource :configuracion, only: :show
   root to: 'dashboards#show'
 
   devise_for :usuarios, controllers: {
