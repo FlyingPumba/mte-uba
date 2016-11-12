@@ -1,0 +1,34 @@
+<%- model_class = NovedadMecanica -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<% content_for(:title, NovedadMecanica.model_name.human.titlecase) %>
+
+<table class="table">
+    <thead>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </thead>
+    <tbody>
+      <tr>
+        <th><strong><%= model_class.human_attribute_name(:fecha) %>:</strong></th>
+        <td><%= @novedad_mecanica.fecha %></td>
+        <th><strong><%= model_class.human_attribute_name(:observacion) %>:</strong></th>
+        <td><%= @novedad_mecanica.observacion %> </td>
+      </tr>
+</table>
+
+
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              unidad_path(@unidad), :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_unidad_novedad_mecanica_path(@unidad,@novedad_mecanica), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              unidad_novedad_mecanica_path(@unidad,@novedad_mecanica),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

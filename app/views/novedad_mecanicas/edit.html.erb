@@ -1,0 +1,14 @@
+<%- model_class = NovedadMecanica -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+<% content_for(:title, NovedadMecanica.model_name.human.titlecase) %>
+
+<% content_for(:breadcrumbs) do %>
+    <%= breadcrumbs do |b|
+      b.item Unidad.model_name.human, unidades_path
+      b.item "Editando Novedad Mecanica", root_path, :active => true
+    end %>
+<%end%>
+
+<%= render 'form' %>

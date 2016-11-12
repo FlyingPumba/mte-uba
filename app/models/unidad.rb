@@ -1,3 +1,4 @@
+
 # == Schema Information
 #
 # Table name: unidades
@@ -24,6 +25,7 @@ class Unidad < ActiveRecord::Base
   belongs_to :taller
   has_many :unidad_choferes, class_name: 'UnidadChofer', dependent: :destroy
   has_many :choferes,-> {uniq} ,through: :unidad_choferes, dependent: :destroy
+  has_many :novedades_mecanicas, class_name: "NovedadMecanica", dependent: :destroy
 
   accepts_nested_attributes_for :unidad_choferes, reject_if: :all_blank, allow_destroy: true
   scope :by_taller, ->(taller) { where(taller_id: taller.id) }

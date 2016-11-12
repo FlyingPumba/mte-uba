@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :detalles
   resources :nota_reparaciones
   resources :nota_pedidos
-  resources :unidades
+  resources :unidades do
+    resources :novedad_mecanicas
+  end
   resources :proveedores
   resources :choferes
   resources :memberships

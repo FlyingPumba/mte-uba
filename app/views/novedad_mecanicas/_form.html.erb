@@ -1,0 +1,22 @@
+<%= semantic_form_for [@unidad, @novedad_mecanica] do |f| %>
+
+<!-- <%#= f.semantic_errors %> -->
+  <%= render 'shared/error_handler', :obj_errors => @novedad_mecanica.errors %>
+
+  <%= f.inputs(:class => :column_left ) do %>
+
+    <%= f.input :fecha, as: :date_select %>
+    <%= f.input :observacion, as: :text %>
+  <% end %>
+
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                unidad_path(@unidad), :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>
+

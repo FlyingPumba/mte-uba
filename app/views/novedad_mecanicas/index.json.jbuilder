@@ -1,0 +1,1 @@
+json.array! @novedad_mecanicas, partial: 'novedad_mecanicas/novedad_mecanica', as: :novedad_mecanica

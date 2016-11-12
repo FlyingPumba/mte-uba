@@ -14,6 +14,7 @@
 <%= render 'nota_pedido', :obj_to_show => @unidad %>
 
 <%= render 'nota_reparacion', :obj_to_show => @unidad %>
+<%= render 'novedad_mecanica', :obj_to_show => @unidad %>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               unidades_path, :class => 'btn btn-default'  %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161105043100) do
+ActiveRecord::Schema.define(version: 20161112144945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,16 @@ ActiveRecord::Schema.define(version: 20161105043100) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "novedad_mecanicas", force: :cascade do |t|
+    t.string   "observacion"
+    t.date     "fecha"
+    t.integer  "unidad_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "novedad_mecanicas", ["unidad_id"], name: "index_novedad_mecanicas_on_unidad_id", using: :btree
 
   create_table "proveedores", force: :cascade do |t|
     t.string   "nombre"
@@ -176,6 +186,7 @@ ActiveRecord::Schema.define(version: 20161105043100) do
   add_foreign_key "memberships", "roles", column: "role_id"
   add_foreign_key "memberships", "talleres"
   add_foreign_key "memberships", "usuarios"
+  add_foreign_key "novedad_mecanicas", "unidades"
   add_foreign_key "proveedores", "talleres"
   add_foreign_key "turnos", "talleres"
   add_foreign_key "unidad_choferes", "choferes"

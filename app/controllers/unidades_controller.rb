@@ -28,6 +28,7 @@ class UnidadesController < AuthorizedController
     # @nota_pedidos = @nota_pedidos.paginate(page: params[:page], per_page:15)
     @detalles_de_reparaciones = @unidad.detalles.select{|detalle| detalle.detallable_type == "NotaReparacion"}
     @nota_reparaciones = @detalles_de_reparaciones.map{|detalle| NotaReparacion.find(detalle.detallable_id)}
+    @novedades_mecanicas = @unidad.novedades_mecanicas.paginate(page:params[:page], per_page:15)
     # @nota_reparaciones = @nota_reparaciones.paginate(page: params[:page], per_page:15)
   end
 
