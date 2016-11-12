@@ -1,5 +1,10 @@
-<%- model_class = Proveedor -%>
-<div class="page-header">
-  <h3><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h3>
-</div>
-<%= render :partial => 'form' %>
+<% content_for(:title, Proveedor.model_name.human.titlecase) %>
+
+<% content_for(:breadcrumbs) do %>
+    <%= breadcrumbs do |b|
+      b.item Proveedor.model_name.human, proveedores_path
+      b.item "Nuevo Proveedor", root_path, :active => true
+    end %>
+<%end%>
+
+<%= render 'form' %>

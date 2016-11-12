@@ -20,4 +20,15 @@
 class Proveedor < ActiveRecord::Base
   belongs_to :taller
   has_many :direcciones, as: :direccionable, class_name:"Direccion"
+  scope :by_taller, ->(taller) { where(taller_id: taller.id) }
+  accepts_nested_attributes_for :direcciones, reject_if: :all_blank, allow_destroy: true
+
+  def first_direccion
+    first_direccion = "sin Direccion"
+    if direcciones.any?
+      direccion = direcciones.first
+      first_direccion = "#{direccion.full_direccion}"
+    end
+    first_direccion
+  end
 end

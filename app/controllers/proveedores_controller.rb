@@ -4,7 +4,19 @@ class ProveedoresController < AuthorizedController
   # GET /proveedores
   # GET /proveedores.json
   def index
-    @proveedores = Proveedor.all
+    @search = Proveedor.by_taller(current_taller).search(params[:q])
+    @results = @search.result
+    @proveedores = @results.paginate(page: params[:page], per_page: 15)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      #format.xml  { render xml: @unidades }
+      #format.json do
+      #  @unidades = Unidad.by_taller(current_taller).to_a
+      #  render json: @unidades
+      #end
+    end
+
   end
 
   # GET /proveedores/1
@@ -14,7 +26,7 @@ class ProveedoresController < AuthorizedController
 
   # GET /proveedores/new
   def new
-    @proveedor = Proveedor.new
+    @proveedor = current_taller.proveedores.build
   end
 
   # GET /proveedores/1/edit
@@ -24,7 +36,7 @@ class ProveedoresController < AuthorizedController
   # POST /proveedores
   # POST /proveedores.json
   def create
-    @proveedor = Proveedor.new(proveedor_params)
+    @proveedor = current_taller.proveedores.build(proveedor_params)
 
     respond_to do |format|
       if @proveedor.save
@@ -69,6 +81,6 @@ class ProveedoresController < AuthorizedController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def proveedor_params
-      params.require(:proveedor).permit(:nombre, :taller_id)
+      params.require(:proveedor).permit(:nombre, :taller_id, :direcciones_attributes => [:id, :_destroy, :calle, :altura])
     end
 end

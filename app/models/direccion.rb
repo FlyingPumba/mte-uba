@@ -17,4 +17,8 @@
 
 class Direccion < ActiveRecord::Base
   belongs_to :direccionable, polymorphic: true
+
+  def full_direccion
+    "#{calle} #{altura}"
+  end
 end

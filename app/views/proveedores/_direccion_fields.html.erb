@@ -1,0 +1,13 @@
+<table class='nested-fields'>
+  <tr style="width:100%">
+    <th>Calle</th>
+    <th>Altura</th>
+    <th></th>
+  </tr>
+  <tr style="width:100%">
+    <td><%= f.input :calle%></td>
+    <td> <%= f.input :altura %> </td>
+    <%#= f.select :turno_id, current_taller.turnos.map{ |c| [c.descripcion, c.id] }, { include_blank: '-- elija el Turno --' }, class: "chofer_select", id: 'chofer' %>
+    <td class="remove"><%= link_to_remove_association('' , f,html_options = { class: 'fa fa-trash-o fa-lg' }) %></td>
+  </tr>
+</table>

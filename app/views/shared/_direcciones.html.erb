@@ -1,0 +1,28 @@
+<% if obj_to_show.direcciones.any? %>
+<div class="panel panel-default">
+    <div style="min-height: 50px;" class="panel-heading">direcciones
+    </div>
+    <div class="panel-content">
+    <center>
+        <table class="table table-hover table-striped">
+          <thead>
+            <tr>
+              <th><%= model_class.human_attribute_name(:calle) %></th>
+              <th><%= model_class.human_attribute_name(:altura) %></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% obj_to_show.direcciones.each do |direccion| %>
+              <tr>
+                <td><%= direccion.calle %></td>
+                <td><%= direccion.altura %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        </center>
+    </div>
+</div>
+
+<% end %>

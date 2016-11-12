@@ -51,15 +51,6 @@ ActiveRecord::Schema.define(version: 20161105043100) do
 
   add_index "direcciones", ["direccionable_type", "direccionable_id"], name: "index_direcciones_on_direccionable_type_and_direccionable_id", using: :btree
 
-  create_table "direccions", force: :cascade do |t|
-    t.string   "calle"
-    t.integer  "altura"
-    t.integer  "direccionable_id"
-    t.string   "direccionable_type"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-  end
-
   create_table "memberships", force: :cascade do |t|
     t.integer  "role_id"
     t.integer  "taller_id"
@@ -110,12 +101,6 @@ ActiveRecord::Schema.define(version: 20161105043100) do
   end
 
   add_index "talleres", ["owner_id"], name: "index_talleres_on_owner_id", using: :btree
-
-  create_table "tallers", force: :cascade do |t|
-    t.string   "nombre"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "turnos", force: :cascade do |t|
     t.string   "descripcion"

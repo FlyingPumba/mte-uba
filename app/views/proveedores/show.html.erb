@@ -3,12 +3,19 @@
   <h3><%=t '.title', :default => model_class.model_name.human.titleize %></h3>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:nombre) %>:</strong></dt>
-  <dd><%= @proveedor.nombre %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:taller_id) %>:</strong></dt>
-  <dd><%= @proveedor.taller_id %></dd>
-</dl>
+<% content_for(:title, Proveedor.model_name.human.titlecase) %>
+
+<% content_for(:breadcrumbs) do %>
+  <%= breadcrumbs do |b|
+    b.item Proveedor.model_name.human, proveedores_path
+    b.item @proveedor.nombre, root_path, :active => true
+  end %>
+<%end%>
+
+<%= render 'datos_proveedor' %>
+
+<%= render 'shared/direcciones', :obj_to_show => @proveedor  %>
+
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               proveedores_path, :class => 'btn btn-default'  %>

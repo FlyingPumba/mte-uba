@@ -1,0 +1,18 @@
+<hr class='clear' />
+<h3 class='items-title'>Direcciones</h3>
+
+<%= f.inputs do %>
+    <div class="direcciones">
+      <%= f.semantic_fields_for :direcciones do |fc| %>
+        <%= render partial: 'direccion_fields', locals: {f: fc} %>
+      <% end %>
+    </div>
+<% end %>
+
+<div class="links">
+  <%= link_to_add_association 'Agregar Direccion', f,
+    :direcciones,
+    'data-association-insertion-method' => :append,
+    'data-association-insertion-node' => '.direcciones',
+    :class => 'global_button button'%>
+</div>

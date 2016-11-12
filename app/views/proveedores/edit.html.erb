@@ -1,5 +1,11 @@
-<%- model_class = Proveedor -%>
-<div class="page-header">
-  <h3><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h3>
-</div>
-<%= render :partial => 'form' %>
+<% content_for(:title, Proveedor.model_name.human.titlecase) %>
+
+<% content_for(:breadcrumbs) do %>
+  <%= breadcrumbs do |b|
+      b.item Proveedor.model_name.human, proveedores_path
+      b.item @proveedor.nombre, proveedor_path(@proveedor)
+      b.item 'Editando', edit_proveedor_path, active: true
+  end %>
+<%end%>
+
+<%= render 'form' %>
