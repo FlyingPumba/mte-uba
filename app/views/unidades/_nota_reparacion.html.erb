@@ -15,7 +15,7 @@
             <% @nota_reparaciones.each do |nota_reparacion| %>
               <tr>
                 <td><%= nota_reparacion.fecha %></td>
-                <td><%=link_to (nota_reparacion) do %> <% nota_reparacion.numeroserie %> <% end %></td>
+                <td><%=link_to (nota_reparacion) do %> <%= nota_reparacion.numeroserie %> <% end %></td>
               </tr>
             <% end %>
           </tbody>

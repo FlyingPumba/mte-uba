@@ -15,7 +15,7 @@
             <% @nota_pedidos.each do |nota_pedido| %>
               <tr>
                 <td><%= nota_pedido.fecha %></td>
-                <td><%=link_to (nota_pedido) do %> <% nota_pedido.numeroserie %> <% end %></td>
+                <td><%=link_to (nota_pedido) do %> <%= nota_pedido.numeroserie %> <% end %></td>
               </tr>
             <% end %>
           </tbody>
