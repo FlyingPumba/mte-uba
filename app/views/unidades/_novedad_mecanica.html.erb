@@ -4,14 +4,12 @@
     </div>
     <div class="panel-content">
     <center>
-        </br>
         <% if @novedades_mecanicas.any? %>
         <table class="table table-hover table-striped">
           <thead>
             <tr>
               <th><%= model_class.human_attribute_name(:fecha) %></th>
               <th><%= model_class.human_attribute_name(:observacion) %></th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -23,17 +21,14 @@
             <% end %>
           </tbody>
         </table>
-        <%= will_paginate(@choferes) %>
+        <%= will_paginate(@novedades_mecanicas) %>
+        <% else %>
+        </br>
+        <%= link_to t('.new', :default => t("helpers.links.new")),
+                    new_unidad_novedad_mecanica_path(obj_to_show),
+                    :class => 'btn btn-primary' %>
+        </br>
+        <% end %>
         </center>
     </div>
 </div>
-<% end %>
-
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_unidad_novedad_mecanica_path(obj_to_show),
-            :class => 'btn btn-primary' %>
-
-</br>
-
-</br>

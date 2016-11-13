@@ -16,6 +16,7 @@ class NovedadMecanicasController < ApplicationController
   # GET /novedad_mecanicas/new
   def new
     @novedad_mecanica = @unidad.novedades_mecanicas.build
+    @novedad_mecanica.fecha ||=Time.zone.today
   end
 
   # GET /novedad_mecanicas/1/edit

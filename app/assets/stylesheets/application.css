@@ -39,6 +39,11 @@
   width: 250px !important;
 }
 
+legend.label {
+  max-width: 25%;
+  border-bottom: 0px;
+}
+
 /* line 4, ../../app/assets/stylesheets/application.sass */
 form.formtastic fieldset > ol > li label {
   float: none;
@@ -59,11 +64,6 @@ form.formtastic .input {
 /* line 7, ../../app/assets/stylesheets/application.sass */
 #ui-datepicker-div {
   display: none;
-}
-
-/* line 10, ../../app/assets/stylesheets/application.sass */
-form.formtastic fieldset > ol > li label {
-  float: none;
 }
 
 form.formtastic .stringish input {
