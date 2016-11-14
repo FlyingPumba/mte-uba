@@ -35,6 +35,16 @@
     <%=f.error_span(:fecha) %>
   </div>
 
+  <% if !@nota_reparacion.new_record? %>
+    <div class="form-group">
+      <%= f.label :remito, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-2">
+        <%= f.text_field :remito, :class => 'form-control' %>
+      </div>
+      <%=f.error_span(:remito) %>
+    </div>
+  <% end %>
+
   <%= render('shared/items_detalle', :f => f)%>
 
   <div class="form-group">

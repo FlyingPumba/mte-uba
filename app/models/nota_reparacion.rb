@@ -7,6 +7,7 @@
 #  fecha       :date
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  remito      :string
 #
 
 class NotaReparacion < ActiveRecord::Base

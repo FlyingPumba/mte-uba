@@ -6,9 +6,10 @@
 
 <table class="table table-striped">
   <thead>
-    <tr>    
+    <tr>
       <th><%= model_class.human_attribute_name(:numeroserie) %></th>
       <th><%= model_class.human_attribute_name(:fecha) %></th>
+      <th>Finalizado</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
       <tr>
         <td><%= nota_reparacion.numeroserie %></td>
         <td><%= nota_reparacion.fecha %></td>
+        <td><%= !nota_reparacion.remito.blank? %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
                       nota_reparacion, :class => 'btn btn-default btn-xs' %>
