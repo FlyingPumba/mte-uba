@@ -7,12 +7,13 @@
       <%= render partial: 'shared/detalle_fields', locals: {f: fc} %>
     <% end %>
   </div>
-<% end %>
 
-<div class="links">
-  <%= link_to_add_association 'Agregar Detalle', f,
-    :detalles,
-    'data-association-insertion-method' => :append,
-    'data-association-insertion-node' => '.detalles',
-    :class => 'global_button button'%>
-</div>
+  <div class="links">
+    <%= link_to_add_association 'Agregar Detalle', f,
+      :detalles,
+      partial: 'shared/detalle_fields',
+      'data-association-insertion-method' => :append,
+      'data-association-insertion-node' => '.detalles',
+      :class => 'global_button button'%>
+  </div>
+<% end %>
