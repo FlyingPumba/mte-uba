@@ -16,7 +16,7 @@
 //= require jquery.blockUI
 //= require twitter/bootstrap
 //= require turbolinks
-//= require_tree .
+//= require cocoon
 //= requiert self
 
 $(document).ready(function()
