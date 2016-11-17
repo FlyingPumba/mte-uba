@@ -20,6 +20,8 @@ module Mteuba
 
         options[:link_options] ||= {}
         options[:link_options].merge!(:method => options[:method]) if options[:method]
+        options[:link_options]["data-toggle"] = 'tab'
+        options[:link_options]["data-target-url"] = path
 
         item_list << {
           :label => label,

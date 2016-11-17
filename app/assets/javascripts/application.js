@@ -38,6 +38,7 @@ $(document).ready(function()
       $(this).tipsy();
     }
   });
+
   $('select[title]').each( function() {
       $(this).tipsy();
   });
@@ -72,6 +73,16 @@ $(document).ready(function()
    }
   });
 
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    // re-initialize accordion on tab change
+    $('.accordion').accordion({
+      header: "h3",
+      collapsible: true,
+      active: false,
+      autoHeight: true
+    });
+    window.location.href = e.target.dataset.targetUrl;
+  });
 });
 
 function DynamicSearch(select_name, search_path, id_val, name_val){

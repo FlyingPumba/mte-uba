@@ -37,7 +37,7 @@ module Mteuba
           content_tag("ul", "", :class => "nav navbar-nav") do
             menu.collect { |item|
               content_tag("li", :class => item[:class]) do
-                link_to(item[:label], item[:href], item[:link_options])
+                link_to(item[:label], "", item[:link_options])
               end
             }.join("").html_safe
           end
