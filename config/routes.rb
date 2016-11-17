@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :turnos
-  resources :detalles
   resources :nota_reparaciones
   resources :nota_pedidos
   resources :unidades do

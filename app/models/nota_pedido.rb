@@ -10,11 +10,11 @@
 #
 
 class NotaPedido < ActiveRecord::Base
-  has_many :detalles, as: :detallable, class_name:"Detalle", dependent: :destroy
+  has_many :detalles_unidades, as: :detallable, class_name:"DetalleUnidad", dependent: :destroy
   has_one :solicitante, class_name:"Usuario"
   has_one :autorizante, class_name:"Usuario"
   self.table_name = "notas_pedidos"
 
-  accepts_nested_attributes_for :detalles, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :detalles_unidades, reject_if: :all_blank, allow_destroy: true
 
 end

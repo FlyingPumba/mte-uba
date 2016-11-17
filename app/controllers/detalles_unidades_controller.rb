@@ -1,30 +1,30 @@
-class DetallesController < ApplicationController
+class DetallesUnidadesController < ApplicationController
   before_action :set_detalle, only: [:show, :edit, :update, :destroy]
 
-  # GET /detalles
-  # GET /detalles.json
+  # GET /detalles_unidades
+  # GET /detalles_unidades.json
   def index
-    @detalles = Detalle.all
+    @detalles = DetalleUnidad.all
   end
 
-  # GET /detalles/1
-  # GET /detalles/1.json
+  # GET /detalles_unidades/1
+  # GET /detalles_unidades/1.json
   def show
   end
 
-  # GET /detalles/new
+  # GET /detalles_unidades/new
   def new
-    @detalle = Detalle.new
+    @detalle = DetalleUnidad.new
   end
 
-  # GET /detalles/1/edit
+  # GET /detalles_unidades/1/edit
   def edit
   end
 
-  # POST /detalles
-  # POST /detalles.json
+  # POST /detalles_unidades
+  # POST /detalles_unidades.json
   def create
-    @detalle = Detalle.new(detalle_params)
+    @detalle = DetalleUnidad.new(detalle_params)
 
     respond_to do |format|
       if @detalle.save
@@ -37,8 +37,8 @@ class DetallesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /detalles/1
-  # PATCH/PUT /detalles/1.json
+  # PATCH/PUT /detalles_unidades/1
+  # PATCH/PUT /detalles_unidades/1.json
   def update
     respond_to do |format|
       if @detalle.update(detalle_params)
@@ -51,8 +51,8 @@ class DetallesController < ApplicationController
     end
   end
 
-  # DELETE /detalles/1
-  # DELETE /detalles/1.json
+  # DELETE /detalles_unidades/1
+  # DELETE /detalles_unidades/1.json
   def destroy
     @detalle.destroy
     respond_to do |format|
@@ -64,7 +64,7 @@ class DetallesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_detalle
-      @detalle = Detalle.find(params[:id])
+      @detalle = DetalleUnidad.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

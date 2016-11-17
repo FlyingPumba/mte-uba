@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: detalles
+# Table name: detalles_unidades
 #
 #  id              :integer          not null, primary key
 #  cantidad        :integer
@@ -21,6 +21,7 @@
 #  fk_rails_22a72bdc35  (unidad_id => unidades.id)
 #
 
-class Detalle < ActiveRecord::Base
+class DetalleUnidad < ActiveRecord::Base
   belongs_to :unidad, :class_name => Unidad, :foreign_key => 'unidad_id'
+  self.table_name = "detalles_unidades"
 end

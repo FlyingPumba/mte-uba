@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161114033910) do
+ActiveRecord::Schema.define(version: 20161117063214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20161114033910) do
 
   add_index "choferes", ["taller_id"], name: "index_choferes_on_taller_id", using: :btree
 
-  create_table "detalles", force: :cascade do |t|
+  create_table "detalles_unidades", force: :cascade do |t|
     t.integer  "cantidad"
     t.string   "descripcion"
     t.integer  "detallable_id"
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 20161114033910) do
     t.integer  "unidad_id"
   end
 
-  add_index "detalles", ["detallable_type", "detallable_id"], name: "index_detalles_on_detallable_type_and_detallable_id", using: :btree
-  add_index "detalles", ["unidad_id"], name: "index_detalles_on_unidad_id", using: :btree
+  add_index "detalles_unidades", ["detallable_type", "detallable_id"], name: "index_detalles_unidades_on_detallable_type_and_detallable_id", using: :btree
+  add_index "detalles_unidades", ["unidad_id"], name: "index_detalles_unidades_on_unidad_id", using: :btree
 
   create_table "direcciones", force: :cascade do |t|
     t.string   "calle"
@@ -198,7 +198,7 @@ ActiveRecord::Schema.define(version: 20161114033910) do
   add_index "usuarios", ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "choferes", "talleres"
-  add_foreign_key "detalles", "unidades"
+  add_foreign_key "detalles_unidades", "unidades"
   add_foreign_key "memberships", "roles", column: "role_id"
   add_foreign_key "memberships", "talleres"
   add_foreign_key "memberships", "usuarios"

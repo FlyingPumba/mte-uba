@@ -20,7 +20,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @nota_pedido.detalles.each do |detalle| %>
+    <% @nota_pedido.detalles_unidades.each do |detalle| %>
       <tr>
         <td><%= detalle.cantidad %></td>
         <td><%= detalle.descripcion %></td>

@@ -3,15 +3,15 @@
 
 <%= f.inputs do %>
   <div class="detalles">
-    <%= f.semantic_fields_for :detalles do |fc| %>
-      <%= render partial: 'shared/detalle_fields', locals: {f: fc} %>
+    <%= f.semantic_fields_for :detalles_unidades do |fc| %>
+      <%= render partial: 'shared/detalle_unidad_fields', locals: {f: fc} %>
     <% end %>
   </div>
 
   <div class="links">
-    <%= link_to_add_association 'Agregar Detalle', f,
-      :detalles,
-      partial: 'shared/detalle_fields',
+    <%= link_to_add_association 'Agregar Detalle con destino Unidad', f,
+      :detalles_unidades,
+      partial: 'shared/detalle_unidad_fields',
       'data-association-insertion-method' => :append,
       'data-association-insertion-node' => '.detalles',
       :class => 'global_button button'%>

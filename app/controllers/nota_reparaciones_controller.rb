@@ -75,6 +75,6 @@ class NotaReparacionesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nota_reparacion_params
-      params.require(:nota_reparacion).permit(:numeroserie, :fecha, :remito, :detalles_attributes => [:id, :_destroy, :descripcion, :cantidad, :unidad_id])
+      params.require(:nota_reparacion).permit(:numeroserie, :fecha, :remito, :detalles_unidades_attributes => [:id, :_destroy, :descripcion, :cantidad, :unidad_id])
     end
 end

@@ -37,7 +37,7 @@ class Unidad < ActiveRecord::Base
   validates :año, presence: true
   validates_uniqueness_of :patente, scope: :taller_id
 
-  has_many :detalles, class_name: 'Detalle', dependent: :restrict_with_exception
+  has_many :detalles, class_name: 'DetalleUnidad', dependent: :restrict_with_exception
   # has_many :nota_reparaciones, class_name: 'NotaReparacion', dependent: :restrict_with_exception
   # has_many :nota_pedidos, class_name: 'NotaPedido', dependent: :restrict_with_exception
 
