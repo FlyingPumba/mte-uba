@@ -75,6 +75,6 @@ class NotaPedidosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nota_pedido_params
-      params.require(:nota_pedido).permit(:numeroserie, :fecha, :detalles_unidades_attributes => [:id, :_destroy, :descripcion, :cantidad, :unidad_id])
+      params.require(:nota_pedido).permit(:numeroserie, :fecha, :detalles_unidades_attributes => [:id, :_destroy, :descripcion, :cantidad, :unidad_id], :detalles_deposito_attributes => [:id, :_destroy, :descripcion, :cantidad, :unidad_id])
     end
 end

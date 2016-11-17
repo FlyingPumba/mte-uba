@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117063214) do
+ActiveRecord::Schema.define(version: 20161117065912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(version: 20161117063214) do
   end
 
   add_index "choferes", ["taller_id"], name: "index_choferes_on_taller_id", using: :btree
+
+  create_table "detalles_deposito", force: :cascade do |t|
+    t.integer  "cantidad"
+    t.string   "descripcion"
+    t.integer  "detallable_id"
+    t.string   "detallable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "detalles_deposito", ["detallable_type", "detallable_id"], name: "index_detalles_deposito_on_detallable_type_and_detallable_id", using: :btree
 
   create_table "detalles_unidades", force: :cascade do |t|
     t.integer  "cantidad"

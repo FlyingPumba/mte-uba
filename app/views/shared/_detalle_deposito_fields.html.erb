@@ -1,0 +1,14 @@
+<table class='nested-fields'>
+  <tr style="width:100%">
+    <th>Cantidad</th>
+    <th>Descripción</th>
+    <th>Destino</th>
+    <th></th>
+  </tr>
+  <tr style="width:100%">
+    <td><%= f.text_field :cantidad, :class => 'form-control' %></td>
+    <td><%= f.text_field :descripcion, :class => 'form-control' %></td>
+    <td>Taller</td>
+    <td class="remove"><%= link_to_remove_association('' , f,html_options = { class: 'fa fa-trash-o fa-lg' }) %></td>
+  </tr>
+</table>

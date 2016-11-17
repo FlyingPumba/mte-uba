@@ -27,6 +27,13 @@
         <td><%= Unidad.find(detalle.unidad_id).patente %></td>
       </tr>
     <% end %>
+    <% @nota_pedido.detalles_deposito.each do |detalle| %>
+      <tr>
+        <td><%= detalle.cantidad %></td>
+        <td><%= detalle.descripcion %></td>
+        <td>Taller</td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 

@@ -6,6 +6,9 @@
     <%= f.semantic_fields_for :detalles_unidades do |fc| %>
       <%= render partial: 'shared/detalle_unidad_fields', locals: {f: fc} %>
     <% end %>
+    <%= f.semantic_fields_for :detalles_deposito do |fc| %>
+      <%= render partial: 'shared/detalle_deposito_fields', locals: {f: fc} %>
+    <% end %>
   </div>
 
   <div class="links">
@@ -15,5 +18,12 @@
       'data-association-insertion-method' => :append,
       'data-association-insertion-node' => '.detalles',
       :class => 'global_button button'%>
+      
+      <%= link_to_add_association 'Agregar Detalle con destino Taller', f,
+        :detalles_deposito,
+        partial: 'shared/detalle_deposito_fields',
+        'data-association-insertion-method' => :append,
+        'data-association-insertion-node' => '.detalles',
+        :class => 'global_button button'%>
   </div>
 <% end %>
