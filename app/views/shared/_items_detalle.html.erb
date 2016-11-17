@@ -12,13 +12,14 @@
   </div>
 
   <div class="links">
+    </br>
     <%= link_to_add_association 'Agregar Detalle con destino Unidad', f,
       :detalles_unidades,
       partial: 'shared/detalle_unidad_fields',
       'data-association-insertion-method' => :append,
       'data-association-insertion-node' => '.detalles',
       :class => 'global_button button'%>
-      
+    </br>
       <%= link_to_add_association 'Agregar Detalle con destino Taller', f,
         :detalles_deposito,
         partial: 'shared/detalle_deposito_fields',
