@@ -12,7 +12,7 @@
 #
 # Indexes
 #
-#  index_detalles_unidades_on_detallable_type_and_detallable_id  (detallable_type,detallable_id)
+#  index_detalles_deposito_on_detallable_type_and_detallable_id  (detallable_type,detallable_id)
 #
 
 class DetalleDeposito < ActiveRecord::Base
