@@ -18,7 +18,7 @@
   <div class="form-group">
     <%= f.label :numeroserie, :class => 'control-label col-lg-2' %>
     <div class="col-lg-2">
-      <%= f.text_field :numeroserie, :class => 'form-control' %>
+      <%= f.text_field :numeroserie,disabled:true, :class => 'form-control' %>
       <script type="text/javascript">
       // script to disable numeroserie field, since it's autopopulated from the controller
       $('#nota_pedido_numeroserie').attr('readonly', 'true');
@@ -30,7 +30,7 @@
   <div class="form-group">
     <%= f.label :fecha, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.date_select :fecha, :class => 'datepicker' %>
+      <%= f.text_field :fecha, :class => 'datepicker' %>
     </div>
     <%=f.error_span(:fecha) %>
   </div>
