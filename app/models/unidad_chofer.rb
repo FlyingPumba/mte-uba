@@ -17,9 +17,9 @@
 #
 # Foreign Keys
 #
-#  fk_rails_146a9a2e81  (turno_id => turnos.id)
-#  fk_rails_95afa33fd8  (chofer_id => choferes.id)
-#  fk_rails_af5238b50c  (unidad_id => unidades.id)
+#  fk_rails_02cd4bba73  (unidad_id => unidades.id)
+#  fk_rails_197ee1866e  (turno_id => turnos.id)
+#  fk_rails_4e3eab7b05  (chofer_id => choferes.id)
 #
 
 class UnidadChofer < ActiveRecord::Base

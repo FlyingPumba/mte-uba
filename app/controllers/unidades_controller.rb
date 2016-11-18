@@ -10,11 +10,6 @@ class UnidadesController < AuthorizedController
 
     respond_to do |format|
       format.html # index.html.erb
-      #format.xml  { render xml: @unidades }
-      #format.json do
-      #  @unidades = Unidad.by_taller(current_taller).to_a
-      #  render json: @unidades
-      #end
     end
 
   end
@@ -92,42 +87,4 @@ class UnidadesController < AuthorizedController
     def unidad_params
       params.require(:unidad).permit(:patente, :marca,:año,:fueraDeServicio, :unidad_choferes_attributes => [:id, :_destroy,:chofer_id, :turno_id])
     end
-    # Never trust parameters from the scary internet, only allow the white list through.
-    #def unidad_params_2
-     # unidad_chofer_keys = params[:unidad].try(:fetch, :unidad_choferes_attributes, {})
-     # permi = [:id, :_destroy,:chofer_id,:turno_id]
-     # permitidos_relacion =permit_recursive_params(unidad_chofer_keys)
-     # total_permi = permi + permitidos_relacion
-     # params.require(:unidad).permit(:patente,:marca,:id,:_destroy,:chofer_id,:turno_id, :año,:fueraDeServicio,unidad_choferes_attributes: total_permi)
-      #unidad_choferes_keys = params[:unidad].try(:fetch, :unidad_choferes_attributes, {})
-      #params.require(:unidad).permit(:patente,:marca, :año,:fueraDeServicio, unidad_choferes_attributes: permi,unidad_choferes_attributes:[ tor.first => permi, tor.second => permi, tor.last => permi ])
-    #end
-
-
-    #def unidad_params
-    #  choferes_attributes = params[:unidad][:unidad_choferes_attributes].keys.each_with_object([]) do |k,memo|
-    #   memo << {k => [:id, :_destroy, :chofer_id, :turno_id]}
-    #  end
-    #  choferes_attributes += [:id, :_destroy, :chofer_id, :turno_id]
-    #  params.require(:unidad).permit(:patente, :marca,:año,:fueraDeServicio, unidad_choferes_attributes: choferes_attributes)
-    #end
-
-    #def permit_recursive_params(params)
-    #  (params.try(:to_unsafe_h) || params).map do |key, value|
-    #    if value.is_a?(Array)
-    #      value = value.first
-    #      if value.is_a?(Array) || value.is_a?(Hash)
-    #        { key => [permit_recursive_params(value)]}
-    #      else
-    #        { key => []}
-    #      end
-    #    elsif value.is_a?(Hash) || value.is_a?(ActionController::Parameters)
-    #     { key => [permit_recursive_params(value)]}
-    #    else
-    #      key
-    #    end
-    #  end
-    #end
-
-
 end

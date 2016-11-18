@@ -4,7 +4,13 @@ class NotaReparacionesController < ApplicationController
   # GET /notas_reparaciones
   # GET /notas_reparaciones.json
   def index
-    @notas_reparaciones = NotaReparacion.all
+    @search = NotaReparacion.by_taller(current_taller).search(params[:q])
+    @results = @search.result
+    @notas_reparaciones = @results.paginate(page: params[:page], per_page: 15)
+
+    respond_to do |format|
+      format.html # index.html.erb
+    end
   end
 
   # GET /notas_reparaciones/1
@@ -14,12 +20,12 @@ class NotaReparacionesController < ApplicationController
 
   # GET /notas_reparaciones/new
   def new
-    @nota_reparacion = NotaReparacion.new
+    @nota_reparacion = current_taller.notas_reparaciones.build
     @nota_reparacion.fecha = Date.today
 
     # Autopopulate with next id to be assigned
-    if NotaReparacion.any?
-      @nota_reparacion.numeroserie = NotaReparacion.maximum(:id).next
+    if current_taller.notas_reparaciones.any?
+      @nota_reparacion.numeroserie = current_taller.notas_reparaciones.maximum(:id).next
     else
       @nota_reparacion.numeroserie = 1
     end
@@ -33,6 +39,7 @@ class NotaReparacionesController < ApplicationController
   # POST /notas_reparaciones.json
   def create
     @nota_reparacion = NotaReparacion.new(nota_reparacion_params)
+    @nota_reparacion.update(taller_id: current_taller.id)
 
     respond_to do |format|
       if @nota_reparacion.save

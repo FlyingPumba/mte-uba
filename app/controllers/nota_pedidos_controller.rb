@@ -4,7 +4,13 @@ class NotaPedidosController < ApplicationController
   # GET /notas_pedidos
   # GET /notas_pedidos.json
   def index
-    @notas_pedidos = NotaPedido.all
+    @search = NotaPedido.by_taller(current_taller).search(params[:q])
+    @results = @search.result
+    @notas_pedidos = @results.paginate(page: params[:page], per_page: 15)
+
+    respond_to do |format|
+      format.html # index.html.erb
+    end
   end
 
   # GET /notas_pedidos/1
@@ -14,11 +20,11 @@ class NotaPedidosController < ApplicationController
 
   # GET /notas_pedidos/new
   def new
-    @nota_pedido = NotaPedido.new
+    @nota_pedido = current_taller.notas_pedidos.build
     @nota_pedido.fecha = Date.today
     # Autopopulate with next id to be assigned
-    if NotaPedido.any?
-      @nota_pedido.numeroserie = NotaPedido.maximum(:id).next
+    if current_taller.notas_pedidos.any?
+      @nota_pedido.numeroserie = current_taller.notas_pedidos.maximum(:id).next
     else
       @nota_pedido.numeroserie = 1
     end
@@ -32,6 +38,7 @@ class NotaPedidosController < ApplicationController
   # POST /notas_pedidos.json
   def create
     @nota_pedido = NotaPedido.new(nota_pedido_params)
+    @nota_pedido.update(taller_id: current_taller.id)
 
     respond_to do |format|
       if @nota_pedido.save

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117065912) do
+ActiveRecord::Schema.define(version: 20161118033542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,15 @@ ActiveRecord::Schema.define(version: 20161117065912) do
 
   add_index "direcciones", ["direccionable_type", "direccionable_id"], name: "index_direcciones_on_direccionable_type_and_direccionable_id", using: :btree
 
+  create_table "direccions", force: :cascade do |t|
+    t.string   "calle"
+    t.integer  "altura"
+    t.integer  "direccionable_id"
+    t.string   "direccionable_type"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
   create_table "memberships", force: :cascade do |t|
     t.integer  "role_id"
     t.integer  "taller_id"
@@ -80,7 +89,10 @@ ActiveRecord::Schema.define(version: 20161117065912) do
     t.date     "fecha"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "taller_id"
   end
+
+  add_index "notas_pedidos", ["taller_id"], name: "index_notas_pedidos_on_taller_id", using: :btree
 
   create_table "notas_reparaciones", force: :cascade do |t|
     t.string   "numeroserie"
@@ -88,7 +100,10 @@ ActiveRecord::Schema.define(version: 20161117065912) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "remito"
+    t.integer  "taller_id"
   end
+
+  add_index "notas_reparaciones", ["taller_id"], name: "index_notas_reparaciones_on_taller_id", using: :btree
 
   create_table "novedad_mecanicas", force: :cascade do |t|
     t.string   "observacion"
@@ -123,6 +138,12 @@ ActiveRecord::Schema.define(version: 20161117065912) do
   end
 
   add_index "talleres", ["owner_id"], name: "index_talleres_on_owner_id", using: :btree
+
+  create_table "tallers", force: :cascade do |t|
+    t.string   "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "turnos", force: :cascade do |t|
     t.string   "descripcion"
@@ -198,6 +219,8 @@ ActiveRecord::Schema.define(version: 20161117065912) do
   add_foreign_key "memberships", "roles", column: "role_id"
   add_foreign_key "memberships", "talleres"
   add_foreign_key "memberships", "usuarios"
+  add_foreign_key "notas_pedidos", "talleres"
+  add_foreign_key "notas_reparaciones", "talleres"
   add_foreign_key "novedad_mecanicas", "unidades"
   add_foreign_key "proveedores", "talleres"
   add_foreign_key "turnos", "talleres"
