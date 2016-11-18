@@ -72,18 +72,18 @@ $(document).ready(function()
      $(".accordion").accordion("option", "active", 1);
    }
   });
-
-  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-    // re-initialize accordion on tab change
-    $('.accordion').accordion({
-      header: "h3",
-      collapsible: true,
-      active: false,
-      autoHeight: true
-    });
-    window.location.href = e.target.dataset.targetUrl;
-  });
 });
+
+$(document).on('shown.bs.tab', 'a[data-toggle="tab"]', function (e) {
+  // re-initialize accordion on tab change
+  $('.accordion').accordion({
+    header: "h3",
+    collapsible: true,
+    active: false,
+    autoHeight: true
+  });
+  window.location.href = e.target.dataset.targetUrl;
+})
 
 function DynamicSearch(select_name, search_path, id_val, name_val){
   if (id_val == null) id_val = "";
