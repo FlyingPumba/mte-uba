@@ -15,6 +15,8 @@ class NotaReparacionesController < ApplicationController
   # GET /notas_reparaciones/new
   def new
     @nota_reparacion = NotaReparacion.new
+    @nota_reparacion.fecha = Date.today
+
     # Autopopulate with next id to be assigned
     if NotaReparacion.any?
       @nota_reparacion.numeroserie = NotaReparacion.maximum(:id).next
