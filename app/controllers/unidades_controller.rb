@@ -18,10 +18,10 @@ class UnidadesController < AuthorizedController
   # GET /unidades/1.json
   def show
     @choferes = @unidad.choferes.order('apellido desc').paginate(page: params[:page], per_page: 15)
-    @detalles_de_pedidos = @unidad.detalles_unidades.select{|detalle| detalle.detallable_type == "NotaPedido"}
+    @detalles_de_pedidos = @unidad.detalles.select{|detalle| detalle.detallable_type == "NotaPedido"}
     @nota_pedidos = @detalles_de_pedidos.map{|detalle| NotaPedido.find(detalle.detallable_id)}
     # @nota_pedidos = @nota_pedidos.paginate(page: params[:page], per_page:15)
-    @detalles_de_reparaciones = @unidad.detalles_unidades.select{|detalle| detalle.detallable_type == "NotaReparacion"}
+    @detalles_de_reparaciones = @unidad.detalles.select{|detalle| detalle.detallable_type == "NotaReparacion"}
     @nota_reparaciones = @detalles_de_reparaciones.map{|detalle| NotaReparacion.find(detalle.detallable_id)}
     @novedades_mecanicas = @unidad.novedades_mecanicas.paginate(page:params[:page], per_page:15)
     # @nota_reparaciones = @nota_reparaciones.paginate(page: params[:page], per_page:15)
